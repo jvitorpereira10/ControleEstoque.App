@@ -15,6 +15,5 @@ namespace ControleEstoque.App.Data
         public DbSet<Product> Product { get; set; }
         public DbSet<SalesRecord> SalesRecord { get; set; }
         public DbSet<Supplier> Supplier { get; set; }
-        public DbSet<Seller> Seller { get; set; }
     }
 }

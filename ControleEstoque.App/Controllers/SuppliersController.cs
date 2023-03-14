@@ -1,6 +1,6 @@
 ﻿namespace ControleEstoque.App.Controllers
 {
-    public class CadastrosController
-    {
-    }
+  public class SuppliersController
+  {
+  }
 }

@@ -6,19 +6,35 @@ namespace ControleEstoque.App.Models
     {
         [Required]
         public int Id { get; set; }
-        [Required]
-        public string Description { get; set; }
-        public string SellerCode { get; set; }
-        public int BarCode { get; set; }
-        private int Stock { get; set; }
 
+        [Required]
+        [Display(Name = "Descrição:")]
+        public string Description { get; set; }
+
+        [Display(Name = "Código do Produto:")]
+        public string ProductCode { get; set; }
+
+        [Display(Name = "Código de Barras:")]
+        public string BarCode { get; set; }
+
+        [Display(Name = "Estoque:")]
+        public int Stock { get; set; }
+
+        [Display(Name = "Preço:")]
         [DataType(DataType.Currency)]
-        private double ListPrice { get; set; }
+        public double ListPrice { get; set; }
+
+        [Display(Name = "Preço Promocional:")]
+        [DataType(DataType.Currency)]
         public double PromotionalPrice { get; set; }
 
+        [Display(Name = "Início Promoção:")]
+        [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime PromoStart { get; set; }
 
+        [Display(Name = "Término Promoção:")]
+        [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime PromoEnd { get; set; }
 
@@ -26,11 +42,11 @@ namespace ControleEstoque.App.Models
         {
         }
 
-        public Product(int id, string description, string sellerCode, int barCode, int stock, double listPrice, double promotionalPrice, DateTime promoStart, DateTime promoEnd)
+        public Product(int id, string description, string productCode, string barCode, int stock, double listPrice, double promotionalPrice, DateTime promoStart, DateTime promoEnd)
         {
             Id = id;
             Description = description;
-            SellerCode = sellerCode;
+            ProductCode = productCode;
             BarCode = barCode;
             Stock = stock;
             ListPrice = listPrice;

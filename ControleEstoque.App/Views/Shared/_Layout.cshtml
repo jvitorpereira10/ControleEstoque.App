@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SalesWebMvc</title>
+    <title>@ViewData["Title"] - ControleEstoque.App</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-flatly.css" />
@@ -19,33 +19,55 @@
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
+            <div class="navbar-brand">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">SalesWebMvc</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">ControleEstoque.App</a>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Cadastros" asp-action="Index">Cadastros</a></li>
-                    <li><a asp-area="" asp-controller="SalesRecords" asp-action="Index">Pedidos</a></li>
-                    <li><a asp-area="" asp-controller="Stocks" asp-action="Index">Estoques</a></li>
-                    <li><a asp-area="" asp-controller="Prices" asp-action="Contact">Preços</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">Sobre</a></li>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Produtos
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" asp-controller="Products" asp-action="Create">Cadastrar</a></li>
+                    <li><a class="dropdown-item" asp-controller="Products" asp-action="Details">Consultar</a></li>
+                    <li><a class="dropdown-item" asp-controller="Products" asp-action="Stock">Estoque</a></li>
+                    <li><a class="dropdown-item" asp-controller="Products" asp-action="Price">Preço</a></li>
+                </ul>
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Clientes
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" asp-controller="Clients" asp-action="Create">Cadastrar</a></li>
+                    <li><a class="dropdown-item" asp-controller="Clients" asp-action="Details">Consultar</a></li>
+                </ul>
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Fornecedores
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" asp-controller="Suppliers" asp-action="Create">Cadastrar</a></li>
+                    <li><a class="dropdown-item" asp-controller="Suppliers" asp-action="Details">Consultar</a></li>
+                </ul>
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Pedidos
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" asp-controller="SalesRecords" asp-action="Create">Incluir</a></li>
+                    <li><a class="dropdown-item" asp-controller="SalesRecords" asp-action="Details">Consultar</a></li>
                 </ul>
             </div>
         </div>
-    </nav>    
+    </nav>
 
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - SalesWebMvc</p>
+            <p>&copy; @DateTime.Now.Year - ControleEstoque.App</p>
         </footer>
     </div>
 
