@@ -1,5 +1,84 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model ControleEstoque.App.Models.Product
 @{
+    ViewData["Title"] = "Cadastrar";
 }
+
+<h2>@ViewData["Title"]</h2>
+<br />
+<hr />
+<h4>Cadastrar Produto</h4>
+<hr />
+
+<section class="content">    
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab"><i class="fa fa-edit text-orange"></i>&nbsp;&nbsp;Dados do Produto</a></li>               
+            </ul>
+            <div class="tab-content">
+                <div class="active tab-pane" id="dadosLocalidade">
+                    <div class="box-body no-padding" style="min-height: 450px">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Ativo</label>
+                                <select class="form-control" name="prodAtivo" id="prodAtivo">
+                                    <option value="0">NÃO</option>
+                                    <option value="1" selected="">SIM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Código de barras</label>
+                                <input type="text" class="form-control" name="barCode" id="barCode" value="" maxlength="200">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Descrição</label>
+                                <input type="text" class="form-control" name="description" id="description" value="" maxlength="300">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Código interno</label>
+                                <input type="text" class="form-control" name="productCode" id="productCode" value="" maxlength="200">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Preço</label>
+                                <input type="text" class="form-control" name="listPrice" id="listPrice" value="" maxlength="200">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Estoque</label>
+                                <input type="text" class="form-control" name="stock" id="stock">
+                            </div>
+                        </div>
+                          <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Preço Promocional</label>
+                                <input type="text" class="form-control" name="PromoPrice" id="PromoPrice">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Início Promoção<span data-toggle="tooltip" title="Obrigatório quando o preço promocional for prenchido." class="text-blue"> (?)</span></label>
+                                <input type="text" class="form-control" name="PromoStart" id="PromoStart">
+                            </div>
+                        </div>
+                         <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Término Promoção<span data-toggle="tooltip" title="Obrigatório quando o preço promocional for prenchido." class="text-blue"> (?)</span></label>
+                                <input type="text" class="form-control" name="PromoEnd" id="PromoEnd">
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+            <!-- /.tab-content -->
+        </div>
+        <!-- /.nav-tabs-custom -->
+</section>
+<!-- /.content -->

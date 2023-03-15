@@ -6,6 +6,7 @@ namespace ControleEstoque.App.Models
     {
         [Required]
         public int Id { get; set; }
+        public bool ProdAtivo { get; set; }
 
         [Required]
         [Display(Name = "Descrição:")]
@@ -21,11 +22,9 @@ namespace ControleEstoque.App.Models
         public int Stock { get; set; }
 
         [Display(Name = "Preço:")]
-        [DataType(DataType.Currency)]
         public double ListPrice { get; set; }
 
         [Display(Name = "Preço Promocional:")]
-        [DataType(DataType.Currency)]
         public double PromotionalPrice { get; set; }
 
         [Display(Name = "Início Promoção:")]

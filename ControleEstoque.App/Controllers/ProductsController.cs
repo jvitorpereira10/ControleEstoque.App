@@ -2,29 +2,33 @@
 using ControleEstoque.App.Models.ViewModels;
 using ControleEstoque.App.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis;
 using System.Diagnostics;
 
 namespace ControleEstoque.App.Controllers
 {
     public class ProductsController : Controller
     {
-        private readonly ILogger<ProductsController> _logger;
         private readonly ProductService _productService;
 
-        public ProductsController(ILogger<ProductsController> logger)
+        public ProductsController(ProductService productService)
         {
-            _logger = logger;
+            _productService = productService;
         }
 
         public async Task<IActionResult> Create()
-        {            
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Index()
+        {
             return View();
         }
 
         public async Task<IActionResult> Details()
         {
-            return View();
+            var obj = await _productService.FindAllAsync();
+            return View(obj);
         }
 
         public async Task<IActionResult> Stock()
@@ -39,17 +43,10 @@ namespace ControleEstoque.App.Controllers
         public async Task<IActionResult> Search(string barCode, string description)
         {
             ViewData["barCode"] = barCode;
-            ViewData["description"] = description;            
+            ViewData["description"] = description;
 
-            Product product = null;
-            if (barCode != null)
-            {
-                product = await _productService.FindByBarCodeAsync(barCode);
-                return View(product);
-            }
-
-            product = await _productService.FindByDescriptionAsync(description);
-            return View(product);
+            var obj = await _productService.FindByBarCodeAsync(barCode);
+            return View(obj);
         }
 
         [HttpPost]

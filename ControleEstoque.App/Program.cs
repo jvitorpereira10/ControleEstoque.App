@@ -1,4 +1,5 @@
 using ControleEstoque.App.Data;
+using ControleEstoque.App.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 
@@ -7,11 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var app = builder.Build();
-
 // Set DbContext for MySQL
 builder.Services.AddDbContext<ControleEstoqueContext>(options =>
-        options.UseMySql(builder.Configuration.GetConnectionString("ControleEstoqueApp"), Microsoft.EntityFrameworkCore.ServerVersion.AutoDetect("ControleEstoqueApp")));
+options.UseMySql(builder.Configuration.GetConnectionString("ControleEstoqueApp"), ServerVersion.Parse("8.0.26-mysql")));
+
+builder.Services.AddScoped<ProductService>();
+builder.Services.AddControllers();
+
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

@@ -31,13 +31,13 @@ namespace ControleEstoque.App.Services
             return await _context.Product.FirstOrDefaultAsync(obj => obj.Id == id);
         }
 
-        public async Task<Product> FindByBarCodeAsync(string barCode)
+        public async Task<IEnumerable<Product>> FindByBarCodeAsync(string barCode)
         {
-            return await _context.Product.FirstOrDefaultAsync(obj => obj.BarCode.ToString().Contains(barCode));
+            return await _context.Product.Where(obj => obj.BarCode.ToString().Contains(barCode)).ToListAsync();
         }
-        public async Task<Product> FindByDescriptionAsync(string description)
+        public async Task<IEnumerable<Product>> FindByDescriptionAsync(string description)
         {
-            return await _context.Product.FirstOrDefaultAsync(obj => obj.Description.ToUpper().Contains(description.ToUpper()));
+            return await _context.Product.Where(obj => obj.Description.ToUpper().Contains(description.ToUpper())).ToListAsync();
         }
 
         public async Task RemoveAsync(int id)
