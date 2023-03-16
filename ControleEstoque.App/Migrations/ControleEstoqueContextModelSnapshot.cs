@@ -61,6 +61,63 @@ namespace ControleEstoque.App.Migrations
                     b.ToTable("Client");
                 });
 
+            modelBuilder.Entity("ControleEstoque.App.Models.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<double>("Amount")
+                        .HasColumnType("double");
+
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("SellerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("SellerId");
+
+                    b.ToTable("Order");
+                });
+
+            modelBuilder.Entity("ControleEstoque.App.Models.OrderItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("double");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("OrderItem");
+                });
+
             modelBuilder.Entity("ControleEstoque.App.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -78,7 +135,7 @@ namespace ControleEstoque.App.Migrations
                     b.Property<double>("ListPrice")
                         .HasColumnType("double");
 
-                    b.Property<bool>("ProdAtivo")
+                    b.Property<bool>("ProdActive")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("ProductCode")
@@ -100,31 +157,6 @@ namespace ControleEstoque.App.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Product");
-                });
-
-            modelBuilder.Entity("ControleEstoque.App.Models.SalesRecord", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<double>("Amount")
-                        .HasColumnType("double");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("SellerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SellerId");
-
-                    b.ToTable("SalesRecord");
                 });
 
             modelBuilder.Entity("ControleEstoque.App.Models.Seller", b =>
@@ -211,15 +243,43 @@ namespace ControleEstoque.App.Migrations
                     b.ToTable("Supplier");
                 });
 
-            modelBuilder.Entity("ControleEstoque.App.Models.SalesRecord", b =>
+            modelBuilder.Entity("ControleEstoque.App.Models.Order", b =>
                 {
+                    b.HasOne("ControleEstoque.App.Models.Client", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ControleEstoque.App.Models.Seller", "Seller")
                         .WithMany()
                         .HasForeignKey("SellerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Client");
+
                     b.Navigation("Seller");
+                });
+
+            modelBuilder.Entity("ControleEstoque.App.Models.OrderItem", b =>
+                {
+                    b.HasOne("ControleEstoque.App.Models.Order", null)
+                        .WithMany("OrderItem")
+                        .HasForeignKey("OrderId");
+
+                    b.HasOne("ControleEstoque.App.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("ControleEstoque.App.Models.Order", b =>
+                {
+                    b.Navigation("OrderItem");
                 });
 #pragma warning restore 612, 618
         }

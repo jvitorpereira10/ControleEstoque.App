@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ControleEstoque.App.Models
 {
@@ -6,33 +7,33 @@ namespace ControleEstoque.App.Models
     {
         [Required]
         public int Id { get; set; }
-        public bool ProdAtivo { get; set; }
+        public bool ProdActive { get; set; }
 
         [Required]
-        [Display(Name = "Descrição:")]
+        [Display(Name = "Descrição")]
         public string Description { get; set; }
 
-        [Display(Name = "Código do Produto:")]
+        [Display(Name = "Código do Produto")]
         public string ProductCode { get; set; }
 
-        [Display(Name = "Código de Barras:")]
+        [Display(Name = "Código de Barras")]
         public string BarCode { get; set; }
 
-        [Display(Name = "Estoque:")]
+        [Display(Name = "Estoque")]
         public int Stock { get; set; }
 
-        [Display(Name = "Preço:")]
+        [Display(Name = "Preço")]
         public double ListPrice { get; set; }
 
-        [Display(Name = "Preço Promocional:")]
+        [Display(Name = "Preço Promocional")]        
         public double PromotionalPrice { get; set; }
 
-        [Display(Name = "Início Promoção:")]
+        [Display(Name = "Início Promoção")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime PromoStart { get; set; }
 
-        [Display(Name = "Término Promoção:")]
+        [Display(Name = "Término Promoção")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime PromoEnd { get; set; }
@@ -41,9 +42,10 @@ namespace ControleEstoque.App.Models
         {
         }
 
-        public Product(int id, string description, string productCode, string barCode, int stock, double listPrice, double promotionalPrice, DateTime promoStart, DateTime promoEnd)
+        public Product(int id, bool prodActive, string description, string productCode, string barCode, int stock, double listPrice, double promotionalPrice, DateTime promoStart, DateTime promoEnd)
         {
             Id = id;
+            ProdActive = prodActive;
             Description = description;
             ProductCode = productCode;
             BarCode = barCode;

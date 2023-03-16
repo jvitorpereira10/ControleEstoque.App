@@ -17,48 +17,50 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-brand">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">ControleEstoque.App</a>
             </div>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Produtos
-                </button>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                    <li><a class="dropdown-item" asp-controller="Products" asp-action="Create">Cadastrar</a></li>
-                    <li><a class="dropdown-item" asp-controller="Products" asp-action="Details">Consultar</a></li>
-                    <li><a class="dropdown-item" asp-controller="Products" asp-action="Stock">Estoque</a></li>
-                    <li><a class="dropdown-item" asp-controller="Products" asp-action="Price">Preço</a></li>
-                </ul>
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Clientes
-                </button>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                    <li><a class="dropdown-item" asp-controller="Clients" asp-action="Create">Cadastrar</a></li>
-                    <li><a class="dropdown-item" asp-controller="Clients" asp-action="Details">Consultar</a></li>
-                </ul>
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Fornecedores
-                </button>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                    <li><a class="dropdown-item" asp-controller="Suppliers" asp-action="Create">Cadastrar</a></li>
-                    <li><a class="dropdown-item" asp-controller="Suppliers" asp-action="Details">Consultar</a></li>
-                </ul>
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Pedidos
-                </button>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                    <li><a class="dropdown-item" asp-controller="SalesRecords" asp-action="Create">Incluir</a></li>
-                    <li><a class="dropdown-item" asp-controller="SalesRecords" asp-action="Details">Consultar</a></li>
-                </ul>
+            <div class="navbar-btn">
+                <div class="btn-group">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Produtos
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" asp-controller="Products" asp-action="Create">Cadastrar</a></li>
+                        <li><a class="dropdown-item" asp-controller="Products" asp-action="Details">Consultar</a></li>
+                        <li><a class="dropdown-item" asp-controller="Products" asp-action="Stock">Estoque</a></li>
+                        <li><a class="dropdown-item" asp-controller="Products" asp-action="Price">Preço</a></li>
+                    </ul>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Clientes
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" asp-controller="Clients" asp-action="Create">Cadastrar</a></li>
+                        <li><a class="dropdown-item" asp-controller="Clients" asp-action="Details">Consultar</a></li>
+                    </ul>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Fornecedores
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" asp-controller="Suppliers" asp-action="Create">Cadastrar</a></li>
+                        <li><a class="dropdown-item" asp-controller="Suppliers" asp-action="Details">Consultar</a></li>
+                    </ul>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Pedidos
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" asp-controller="Orders" asp-action="Create">Incluir</a></li>
+                        <li><a class="dropdown-item" asp-controller="Orders" asp-action="Details">Consultar</a></li>
+                    </ul>
+                     <button class="btn btn-secondary" type="button" aria-expanded="false">
+                        Contato
+                    </button>                   
+                    <button class="btn btn-secondary" type="button" aria-expanded="false">
+                        Sobre
+                    </button>
+                </div>
             </div>
         </div>
     </nav>

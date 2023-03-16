@@ -1,9 +1,11 @@
 ﻿@model ControleEstoque.App.Models.Product
 @{
-    ViewData["Title"] = "Movimentar Estoque";
+    ViewData["Title"] = "Gerenciar Estoque";
 }
 
-<h2>@ViewData["Title"]</h2>
+<hr />
+<h3>@ViewData["Title"]</h3>
+<hr />
 
 <nav class="navbar navbar-dark bg-dark">
     <nav class="navbar navbar-inverse">
@@ -24,3 +26,13 @@
         </div>
     </nav>
 </nav>
+
+<div>
+    <a asp-action="Index">Voltar à Tela Inicial</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -19,7 +19,7 @@
   <ItemGroup>
     <Folder Include="Views\Clients\" />
     <Folder Include="Views\Suppliers\" />
-    <Folder Include="Views\SalesRecords\" />
+    <Folder Include="Views\Orders\" />
   </ItemGroup>
 
 </Project>

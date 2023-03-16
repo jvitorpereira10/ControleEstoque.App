@@ -2,7 +2,9 @@
 using ControleEstoque.App.Models.ViewModels;
 using ControleEstoque.App.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace ControleEstoque.App.Controllers
 {
@@ -25,7 +27,7 @@ namespace ControleEstoque.App.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Details()
+        public async Task<IActionResult> Search(string barCode, string description)
         {
             var obj = await _productService.FindAllAsync();
             return View(obj);
@@ -40,12 +42,14 @@ namespace ControleEstoque.App.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Search(string barCode, string description)
+        public async Task<IActionResult> Details(string barCode, string description, string prodActive)
         {
             ViewData["barCode"] = barCode;
             ViewData["description"] = description;
+            ViewData["prodActive"] = prodActive;
 
-            var obj = await _productService.FindByBarCodeAsync(barCode);
+            var obj = await _productService.FindByFiltersAsync(barCode, description, prodActive);
+
             return View(obj);
         }
 
@@ -59,7 +63,7 @@ namespace ControleEstoque.App.Controllers
             }
 
             await _productService.InsertAsync(product);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Create));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

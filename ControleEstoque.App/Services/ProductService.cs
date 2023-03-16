@@ -1,5 +1,6 @@
 ﻿using ControleEstoque.App.Data;
 using ControleEstoque.App.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 
@@ -15,7 +16,7 @@ namespace ControleEstoque.App.Services
         }
         public async Task<List<Product>> FindAllAsync()
         {
-            return await _context.Product.ToListAsync();
+            return await _context.Product.OrderBy(p => p.Stock).ToListAsync();
         }
 
         public async Task InsertAsync(Product obj)
@@ -31,13 +32,41 @@ namespace ControleEstoque.App.Services
             return await _context.Product.FirstOrDefaultAsync(obj => obj.Id == id);
         }
 
-        public async Task<IEnumerable<Product>> FindByBarCodeAsync(string barCode)
+        public async Task<List<Product>> FindByFiltersAsync(string barCode, string description, string active)
         {
-            return await _context.Product.Where(obj => obj.BarCode.ToString().Contains(barCode)).ToListAsync();
-        }
-        public async Task<IEnumerable<Product>> FindByDescriptionAsync(string description)
-        {
-            return await _context.Product.Where(obj => obj.Description.ToUpper().Contains(description.ToUpper())).ToListAsync();
+            List<Product> obj = new();            
+
+            if (!string.IsNullOrEmpty(barCode) && !string.IsNullOrEmpty(description))
+            {
+                obj = await _context.Product
+                        .Where(obj => obj.BarCode.Contains(barCode))
+                        .Where(obj => obj.Description.Contains(description))
+                        .ToListAsync();
+            }
+            else if (!string.IsNullOrEmpty(barCode) && string.IsNullOrEmpty(description))
+            {
+                obj = await _context.Product
+                       .Where(obj => obj.BarCode.Contains(barCode))
+                       .ToListAsync();
+            }else if (string.IsNullOrEmpty(barCode) && !string.IsNullOrEmpty(description))
+            {
+                obj = await _context.Product
+                       .Where(obj => obj.Description.Contains(description))
+                       .ToListAsync();
+            }
+            else
+            {
+                obj = await _context.Product
+                       .ToListAsync();
+            }
+
+            if (!string.IsNullOrEmpty(active) && active != "2")
+            {
+                bool prodActive = active.Equals("1") ? true : false;
+                return obj.Where(a => a.ProdActive.Equals(prodActive)).ToList();
+            }
+
+            return obj;
         }
 
         public async Task RemoveAsync(int id)

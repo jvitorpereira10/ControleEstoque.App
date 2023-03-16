@@ -1,6 +1,6 @@
 ﻿namespace ControleEstoque.App.Controllers
 {
-    public class SalesRecordsController
+    public class OrdersController
     {
     }
 }
