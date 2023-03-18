@@ -1,0 +1,75 @@
+﻿@model ControleEstoque.App.Models.Product
+
+@{
+    ViewData["Title"] = "Edição de Preço";
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+
+<div class="row">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BarCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BarCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ListPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ListPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PromotionalPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PromotionalPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PromoStart)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PromoStart)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PromoEnd)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PromoEnd)
+        </dd>
+    </dl>
+    <div class="col-md-4">
+        <form asp-action="EditPrice">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="ListPrice" value="Novo Preço:" class="control-label"></label>
+                        <input asp-for="ListPrice" class="form-control" />
+                    </div>
+                </div>                
+                <div class="form-group">
+                    <input type="submit" value="Salvar" class="btn btn-default" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Price">Voltar à consulta</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

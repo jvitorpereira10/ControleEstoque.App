@@ -9,7 +9,7 @@ namespace ControleEstoque.App.Models
         public int Id { get; set; }
         public bool ProdActive { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "{0} required")]
         [Display(Name = "Descrição")]
         public string Description { get; set; }
 
@@ -61,14 +61,14 @@ namespace ControleEstoque.App.Models
             return Stock;
         }
 
-        public void StockIn(int stock)
+        public void StockIn(Product product, int stock)
         {
-            Stock += stock;
+            product.Stock += stock;
         }
 
-        public void StockOut(int stock)
+        public void StockOut(Product product, int stock)
         {
-            Stock -= stock;
+            product.Stock -= stock;
         }
 
         public void ResetStock()
@@ -76,9 +76,9 @@ namespace ControleEstoque.App.Models
             Stock = 0;
         }
 
-        public void UpdatePrice(double price)
+        public void UpdatePrice(Product product, double price)
         {
-            ListPrice = price;
+            product.ListPrice = price;
         }
     }
 }
