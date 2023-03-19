@@ -7,15 +7,18 @@ namespace ControleEstoque.App.Models
     {
         [Required]
         public int Id { get; set; }
+
+        [Display(Name = "Ativo")]
         public bool ProdActive { get; set; }
 
-        [Required(ErrorMessage = "{0} required")]
+        [Required(ErrorMessage = "A {0} é obrigatória")]
         [Display(Name = "Descrição")]
         public string Description { get; set; }
 
         [Display(Name = "Código do Produto")]
         public string ProductCode { get; set; }
 
+        [Required(ErrorMessage = "O {0} é obrigatório")]
         [Display(Name = "Código de Barras")]
         public string BarCode { get; set; }
 
@@ -23,9 +26,11 @@ namespace ControleEstoque.App.Models
         public int Stock { get; set; }
 
         [Display(Name = "Preço")]
+        [DataType(DataType.Currency)]
         public double ListPrice { get; set; }
 
-        [Display(Name = "Preço Promocional")]        
+        [Display(Name = "Preço Promocional")]
+        [DataType(DataType.Currency)]
         public double PromotionalPrice { get; set; }
 
         [Display(Name = "Início Promoção")]

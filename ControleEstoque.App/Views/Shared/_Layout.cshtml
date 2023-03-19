@@ -29,7 +29,7 @@
                             Produtos
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" asp-controller="Products" asp-action="Create">Cadastrar</a></li>
+                            <li><a class="dropdown-item" asp-controller="Products" asp-action="Create">Cadastrar</a></li>                            
                             <li><a class="dropdown-item" asp-controller="Products" asp-action="Details">Consultar</a></li>
                             <li><a class="dropdown-item" asp-controller="Products" asp-action="Stock">Estoque</a></li>
                             <li><a class="dropdown-item" asp-controller="Products" asp-action="Price">Preço</a></li>
@@ -66,10 +66,11 @@
                     </ul>
                     </div>
 
-                    <button class="btn btn-secondary" type="button" aria-expanded="false">
+                    <button class="btn btn-secondary" type="button" aria-expanded="false" asp-controller="Home" asp-action="Contact">
                         Contato
                     </button>
-                    <button class="btn btn-secondary" type="button" aria-expanded="false">
+
+                    <button class="btn btn-secondary" type="button" aria-expanded="false" asp-controller="Home" asp-action="About">
                         Sobre
                     </button>
                 </div>

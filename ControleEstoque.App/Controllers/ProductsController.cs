@@ -78,6 +78,7 @@ namespace ControleEstoque.App.Controllers
             {
                 product.StockOut(product, stock);
             }
+
             try
             {
                 await _productService.UpdateAsync(product);
@@ -120,7 +121,7 @@ namespace ControleEstoque.App.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditPrice(int? id, int listPrice)
+        public async Task<IActionResult> EditPrice(int? id, double listPrice, double promotionalPrice, DateTime promoStart, DateTime promoEnd)
         {
             Product product = await _productService.FindByIdAsync(id.Value);
             if (product == null)
@@ -129,7 +130,10 @@ namespace ControleEstoque.App.Controllers
             }
 
             product.UpdatePrice(product, listPrice);
-           
+            product.PromotionalPrice = promotionalPrice;
+            product.PromoStart = promoStart;
+            product.PromoEnd = promoEnd;
+
             try
             {
                 await _productService.UpdateAsync(product);
@@ -137,7 +141,7 @@ namespace ControleEstoque.App.Controllers
             }
             catch (NotFoundException e)
             {
-                return RedirectToAction(nameof(Error), new ErrorViewModel { Message = e.Message }); ;
+                return RedirectToAction(nameof(Error), new ErrorViewModel { Message = e.Message });
             }
             catch (DbConcurrencyException e)
             {
@@ -167,6 +171,84 @@ namespace ControleEstoque.App.Controllers
 
             await _productService.InsertAsync(product);
             return RedirectToAction(nameof(Create));
+        }
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction(nameof(Error), new ErrorViewModel { Message = "Id not provided." });
+            }
+            var obj = await _productService.FindByIdAsync(id.Value);
+
+            if (obj == null)
+            {
+                return RedirectToAction(nameof(Error), new ErrorViewModel { Message = "Id not found." });
+            }
+
+            return View(obj);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteExecute(int id)
+        {
+            try
+            {
+                await _productService.RemoveAsync(id);
+                return RedirectToAction(nameof(Details));
+            }
+            catch (IntegrityException e)
+            {
+                return RedirectToAction(nameof(Error), new ErrorViewModel { Message = e.Message });
+            }
+        }
+
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction(nameof(Error), new ErrorViewModel { Message = "Id not provided." });
+            }
+            var obj = await _productService.FindByIdAsync(id.Value);
+
+            if (obj == null)
+            {
+                return RedirectToAction(nameof(Error), new ErrorViewModel { Message = "Id not found." });
+            }
+
+            return View(obj);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, Product product)
+        {
+            if (!ModelState.IsValid)
+            {
+                var obj = await _productService.FindByIdAsync(id);
+                return View(obj);
+            }
+
+            if (id != product.Id)
+            {
+                return RedirectToAction(nameof(Error), new ErrorViewModel { Message = "Id mismatch." });
+            }
+
+            try
+            {
+                await _productService.UpdateAsync(product);
+                return RedirectToAction(nameof(Details));
+            }
+            catch (NotFoundException e)
+            {
+                return RedirectToAction(nameof(Error), new ErrorViewModel { Message = e.Message }); ;
+            }
+            catch (DbConcurrencyException e)
+            {
+                return RedirectToAction(nameof(Error), new ErrorViewModel { Message = e.Message });
+            }
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

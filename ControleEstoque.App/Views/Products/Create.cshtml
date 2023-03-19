@@ -16,6 +16,7 @@
             <div class="active tab-pane" id="dadosProduto">
                 <div class="box-body no-padding" style="min-height: 450px">
                     <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label>Ativo</label>
@@ -49,18 +50,21 @@
                             <div class="form-group">
                                 <label>Preço</label>
                                 <input type="text" class="form-control" name="ListPrice" id="ListPrice" value="0" maxlength="200">
+                                <span asp-validation-for="ListPrice" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label>Estoque</label>
                                 <input type="text" class="form-control" name="Stock" value="0" id="Stock">
+                                <span asp-validation-for="Stock" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label>Preço Promocional</label>
                                 <input type="text" class="form-control" name="PromotionalPrice" value="0" id="PromotionalPrice">
+                                <span asp-validation-for="PromotionalPrice" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -77,14 +81,14 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="submit" value="Salvar" class="btn btn-primary" />
+                                <input type="submit" value="Salvar" class="btn btn-success" />
                             </div>
                         </div>
                     </form>
                    <div class="col-md-6">
                         <div class="form-group">
                             <form asp-action="Index">
-                                <input type="submit" value="Voltar" class="btn btn-primary" />
+                                <input type="submit" value="Voltar" class="btn btn-default" />
                             </form>
                         </div>
                     </div>
@@ -95,10 +99,6 @@
     </div>
     <!-- /.nav-tabs-custom -->
 </section>
-
-<div>
-    <a asp-action="Index">Voltar à Tela Inicial</a>
-</div>
 
 @section Scripts {
     @{

@@ -40,6 +40,9 @@
             <thead>
                 <tr class="success">
                     <th>
+                        @Html.DisplayNameFor(model => model.ProdActive)
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.BarCode)
                     </th>
                     <th>
@@ -63,6 +66,9 @@
                 @foreach (var item in Model)
                 {
                     <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProdActive)
+                        </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.BarCode)
                         </td>

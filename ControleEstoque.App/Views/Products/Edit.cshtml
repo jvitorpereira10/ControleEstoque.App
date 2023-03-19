@@ -1,5 +1,96 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model ControleEstoque.App.Models.Product
 @{
+    ViewData["Title"] = "Editar";
+}
+
+<hr />
+<h3>Alterar Produto</h3>
+<hr />
+
+<section class="content">
+    <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab"><i class="fa fa-edit text-orange"></i>&nbsp;&nbsp;Dados do Produto</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="active tab-pane" id="dadosProduto">
+                <div class="box-body no-padding" style="min-height: 450px">
+                    <form asp-action="Edit">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Ativo</label>
+                                <select asp-for="ProdActive" class="form-control">
+                                    <option value="false">NÃO</option>
+                                    <option value="true">SIM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Código de barras:</label>
+                                <input asp-for="BarCode" class="form-control" />
+                                <span asp-validation-for="BarCode" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Descrição:</label>
+                                <input asp-for="Description" class="form-control" />
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Código interno:</label>
+                                <input asp-for="ProductCode" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <input asp-for="ListPrice" class="hidden" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <input asp-for="PromotionalPrice" class="hidden" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <input asp-for="PromoStart" class="hidden" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <input asp-for="PromoEnd" class="hidden" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <input asp-for="Stock" class="hidden" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="submit" value="Salvar" class="btn btn-success" />
+                            </div>
+                        </div>
+                    </form>
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="submit" value="Excluir" class="btn btn-danger" />
+                        <a asp-action="Details" class="btn btn-default">Voltar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- /.tab-content -->
+    </div>
+    <!-- /.nav-tabs-custom -->
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
