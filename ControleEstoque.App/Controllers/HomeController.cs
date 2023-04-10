@@ -23,6 +23,7 @@ namespace ControleEstoque.App.Controllers
         {
             ViewData["Message"] = "Controle de Estoque App.";
             ViewData["AboutApp"] = "Sistema Web de gestão de produtos.";
+
             return View();
         }
         public IActionResult Contact()

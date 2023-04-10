@@ -16,10 +16,4 @@
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Clients\" />
-    <Folder Include="Views\Suppliers\" />
-    <Folder Include="Views\Orders\" />
-  </ItemGroup>
-
 </Project>

@@ -29,7 +29,7 @@
                             Produtos
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" asp-controller="Products" asp-action="Create">Cadastrar</a></li>                            
+                            <li><a class="dropdown-item" asp-controller="Products" asp-action="Create">Cadastrar</a></li>
                             <li><a class="dropdown-item" asp-controller="Products" asp-action="Details">Consultar</a></li>
                             <li><a class="dropdown-item" asp-controller="Products" asp-action="Stock">Estoque</a></li>
                             <li><a class="dropdown-item" asp-controller="Products" asp-action="Price">Preço</a></li>
@@ -37,42 +37,44 @@
                     </div>
 
                     <div class="btn-group">
-                    <button class="btn btn-secondary dropdown-toggle align-self-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Clientes
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" asp-controller="Clients" asp-action="Create">Cadastrar</a></li>
-                        <li><a class="dropdown-item" asp-controller="Clients" asp-action="Details">Consultar</a></li>
-                    </ul>
+                        <button class="btn btn-secondary dropdown-toggle align-self-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Clientes
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" asp-controller="Customers" asp-action="Create">Cadastrar</a></li>
+                            <li><a class="dropdown-item" asp-controller="Customers" asp-action="Details">Consultar</a></li>
+                        </ul>
                     </div>
 
                     <div class="btn-group">
-                    <button class="btn btn-secondary dropdown-toggle align-self-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Fornecedores
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" asp-controller="Suppliers" asp-action="Create">Cadastrar</a></li>
-                        <li><a class="dropdown-item" asp-controller="Suppliers" asp-action="Details">Consultar</a></li>
-                    </ul>
+                        <button class="btn btn-secondary dropdown-toggle align-self-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Fornecedores
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" asp-controller="Suppliers" asp-action="Create">Cadastrar</a></li>
+                            <li><a class="dropdown-item" asp-controller="Suppliers" asp-action="Details">Consultar</a></li>
+                        </ul>
                     </div>
 
                     <div class="btn-group">
-                    <button class="btn btn-secondary dropdown-toggle align-self-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Pedidos
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" asp-controller="Orders" asp-action="Create">Incluir</a></li>
-                        <li><a class="dropdown-item" asp-controller="Orders" asp-action="Details">Consultar</a></li>
-                    </ul>
+                        <button class="btn btn-secondary dropdown-toggle align-self-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Pedidos
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" asp-controller="Orders" asp-action="Create">Incluir</a></li>
+                            <li><a class="dropdown-item" asp-controller="Orders" asp-action="Details">Consultar</a></li>
+                        </ul>
                     </div>
 
-                    <button class="btn btn-secondary" type="button" aria-expanded="false" asp-controller="Home" asp-action="Contact">
-                        Contato
-                    </button>
-
-                    <button class="btn btn-secondary" type="button" aria-expanded="false" asp-controller="Home" asp-action="About">
-                        Sobre
-                    </button>
+                    <div class="btn-group">
+                        <button class="btn btn-secondary dropdown-toggle align-self-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Informações
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" asp-controller="Home" asp-action="Contact">Contato</a></li>
+                            <li><a class="dropdown-item" asp-controller="Home" asp-action="About">Sobre</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

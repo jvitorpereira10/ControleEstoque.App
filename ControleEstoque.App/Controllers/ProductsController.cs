@@ -24,7 +24,7 @@ namespace ControleEstoque.App.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View();
+            return View("~/Views/Home/Index.cshtml");
         }
 
         public async Task<IActionResult> Search(string barCode, string description)
