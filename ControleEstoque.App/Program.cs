@@ -14,6 +14,8 @@ options.UseMySql(builder.Configuration.GetConnectionString("ControleEstoqueApp")
 
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddControllers();
+builder.Environment.IsProduction();
+builder.WebHost.UseIISIntegration();
 
 var app = builder.Build();
 
