@@ -10,11 +10,11 @@ builder.Services.AddControllersWithViews();
 
 // Set DbContext for MySQL
 builder.Services.AddDbContext<ControleEstoqueContext>(options =>
-options.UseMySql(builder.Configuration.GetConnectionString("ControleEstoqueApp"), ServerVersion.Parse("8.0.26-mysql")));
+options.UseMySql(builder.Configuration.GetConnectionString("ControleEstoqueApp"), ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("ControleEstoqueApp"))));
 
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddControllers();
-builder.Environment.IsProduction();
+//builder.Environment.IsProduction();
 builder.WebHost.UseIISIntegration();
 
 var app = builder.Build();
